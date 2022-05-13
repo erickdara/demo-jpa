@@ -1,0 +1,1 @@
+INSERT INTO course(id, name) values (10001, 'JPA in 50 Steps');
