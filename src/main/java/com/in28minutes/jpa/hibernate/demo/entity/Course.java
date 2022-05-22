@@ -1,10 +1,11 @@
 package com.in28minutes.jpa.hibernate.demo.entity;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,7 +19,16 @@ public class Course {
     @GeneratedValue
     private Long id;
 
+    @Column( nullable = false)
     private String name;
+
+    @UpdateTimestamp
+    private LocalDateTime lastUpdatedDate;
+
+    @CreationTimestamp
+    private LocalDateTime createdDate;
+
+
 
 
     public Course(String name) {

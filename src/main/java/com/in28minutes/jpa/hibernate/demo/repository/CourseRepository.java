@@ -40,17 +40,8 @@ public class CourseRepository {
 
         Course course1 = new Course("Web Services in 100 Steps");
         em.persist(course1);
-        Course course2 = new Course("Angular JS Services in 100 Steps");
-        em.persist(course2);
 
-        em.flush();
-
-
-        course1.setName("Web Services in 100 Steps - Updated");
-        course2.setName("Angular JS Services in 100 Steps - Updated");
-
-        em.refresh(course1);
-
-        em.flush();
+        Course course2 = findById(10001L);
+        course2.setName("JPA in 50 Steps - Updated");
     }
 }
