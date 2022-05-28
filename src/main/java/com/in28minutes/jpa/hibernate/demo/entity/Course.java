@@ -13,13 +13,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString
 @Entity
+@NamedQueries(value = {
+        @NamedQuery(name = "query_get_all_courses", query = "Select c From Course c"),
+        @NamedQuery(name = "query_get_100_Steps_courses", query = "Select c From Course c where name like '%100 Steps'")
+
+})
 public class Course {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     private String name;
 
     @UpdateTimestamp
@@ -27,8 +32,6 @@ public class Course {
 
     @CreationTimestamp
     private LocalDateTime createdDate;
-
-
 
 
     public Course(String name) {
