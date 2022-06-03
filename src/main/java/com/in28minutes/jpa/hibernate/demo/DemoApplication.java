@@ -1,6 +1,7 @@
 package com.in28minutes.jpa.hibernate.demo;
 
 import com.in28minutes.jpa.hibernate.demo.repository.CourseRepository;
+import com.in28minutes.jpa.hibernate.demo.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,16 @@ public class DemoApplication implements CommandLineRunner {
     @Autowired
     private CourseRepository repository;
 
+    @Autowired
+    private StudentRepository studentRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
+        studentRepository.saveStudentWithPassport();
         /*Course course = repository.findById(10001L);
 
         logger.info("Course 10001 -> {}", course);
