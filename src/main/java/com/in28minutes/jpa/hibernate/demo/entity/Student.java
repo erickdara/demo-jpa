@@ -2,10 +2,7 @@ package com.in28minutes.jpa.hibernate.demo.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -21,6 +18,9 @@ public class Student {
 
     @Column(nullable = false)
     private String name;
+
+    @OneToOne
+    private Passport passport;
 
     public Student(String name) {
         this.name = name;
