@@ -28,8 +28,8 @@ public class Course {
 
     @Column(nullable = false)
     private String name;
-
     @OneToMany(mappedBy = "course")
+    @ToString.Exclude
     private List<Review> reviews = new ArrayList<>();
 
     @UpdateTimestamp

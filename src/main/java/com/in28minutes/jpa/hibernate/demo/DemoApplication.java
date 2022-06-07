@@ -15,7 +15,7 @@ public class DemoApplication implements CommandLineRunner {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private CourseRepository repository;
+    private CourseRepository courseRepository;
 
     @Autowired
     private StudentRepository studentRepository;
@@ -26,12 +26,13 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        studentRepository.saveStudentWithPassport();
+        //studentRepository.saveStudentWithPassport();
         /*Course course = repository.findById(10001L);
 
         logger.info("Course 10001 -> {}", course);
 
         repository.save(new Course("Microservices in 100 Steps"));*/
-        repository.playWithEntityManager();
+        //repository.playWithEntityManager();
+        courseRepository.addReviewsForCourse();
     }
 }
