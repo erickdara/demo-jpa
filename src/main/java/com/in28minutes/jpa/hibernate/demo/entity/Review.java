@@ -23,6 +23,9 @@ public class Review {
     @Column(nullable = false)
     private String description;
 
+    @ManyToOne
+    private Course course;
+
     public Review(String rating, String name) {
         this.rating=rating;
         this.description = name;

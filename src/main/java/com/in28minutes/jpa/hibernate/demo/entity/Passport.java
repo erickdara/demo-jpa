@@ -19,6 +19,10 @@ public class Passport {
 
     @Column(nullable = false)
     private String number;
+    
+    
+    @OneToOne(fetch=FetchType.LAZY, mappedBy = "passport")
+    private Student student;
 
     public Passport(String name) {
         this.number = name;

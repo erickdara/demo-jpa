@@ -12,9 +12,9 @@ INSERT INTO student(id,name, passport_id) values (20002,'Adam', 40002);
 INSERT INTO student(id,name, passport_id) values (20003,'Jane', 40003);
 
 
-INSERT INTO review(id,rating,description) values (50001,'5','Great Course');
-INSERT INTO review(id,rating,description) values (50002,'4','Wonderful Course');
-INSERT INTO review(id,rating,description) values (50003,'5','Awesome Course');
+INSERT INTO review(id,rating,description,course_id) values (50001,'5','Great Course',10001);
+INSERT INTO review(id,rating,description,course_id) values (50002,'4','Wonderful Course',10001);
+INSERT INTO review(id,rating,description,course_id) values (50003,'5','Awesome Course',10003);
 
 
 

@@ -2,6 +2,7 @@ package com.in28minutes.jpa.hibernate.demo.repository;
 
 import com.in28minutes.jpa.hibernate.demo.DemoApplication;
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Passport;
 import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +14,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -28,13 +30,29 @@ public class StudentRepositoryTest {
     @Autowired
     EntityManager em;
 
+    //Session & Session Factory
+    //EntityManager & Persistence Context
+    //Transaction
+
+    @Test
+    //@Transactional
+    public void someTest(){
+       repository.someOperationToUnderstandPersistenceContext();
+
+    }
+
     @Test
     public void retreiveStudentAndPassportDetails(){
       Student student = em.find(Student.class,20001L);
       logger.info("student -> {}", student);
       logger.info("passport -> {}",student.getPassport());
+    }
 
-
+    @Test
+    public void retreivePassportAndAssociatedStudent(){
+        Passport passport = em.find(Passport.class,40001L);
+        logger.info("passport -> {}", passport);
+        logger.info("passport -> {}",passport.getStudent());
     }
 
 }
