@@ -28,7 +28,7 @@ public class Course {
 
     @Column(nullable = false)
     private String name;
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", fetch=FetchType.EAGER)
     @ToString.Exclude
     private List<Review> reviews = new ArrayList<>();
 
