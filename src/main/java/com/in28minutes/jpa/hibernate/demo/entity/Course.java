@@ -2,6 +2,7 @@ package com.in28minutes.jpa.hibernate.demo.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -32,6 +33,9 @@ public class Course {
     @ToString.Exclude
     private List<Review> reviews = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> students = new ArrayList<>();
+
     @UpdateTimestamp
     private LocalDateTime lastUpdatedDate;
 
@@ -49,5 +53,9 @@ public class Course {
 
     public Course(String name) {
         this.name = name;
+    }
+
+    public void addStudent(Student student){
+        this.students.add(student);
     }
 }
