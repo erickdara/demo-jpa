@@ -2,7 +2,6 @@ package com.in28minutes.jpa.hibernate.demo.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -14,8 +13,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
+@ToString
 @NamedQueries(value = {
         @NamedQuery(name = "query_get_all_courses", query = "Select c From Course c"),
         @NamedQuery(name = "query_get_100_Steps_courses", query = "Select c From Course c where name like '%100 Steps'")
@@ -34,6 +33,7 @@ public class Course {
     private List<Review> reviews = new ArrayList<>();
 
     @ManyToMany(mappedBy = "courses")
+    @ToString.Exclude
     private List<Student> students = new ArrayList<>();
 
     @UpdateTimestamp

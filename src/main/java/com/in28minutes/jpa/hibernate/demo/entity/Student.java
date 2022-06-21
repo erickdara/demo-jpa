@@ -10,8 +10,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
+@ToString
 public class Student {
 
     @Id
