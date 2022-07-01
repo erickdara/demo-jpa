@@ -1,5 +1,6 @@
 package com.in28minutes.jpa.hibernate.demo.repository;
 
+import com.in28minutes.jpa.hibernate.demo.entity.Course;
 import com.in28minutes.jpa.hibernate.demo.entity.Passport;
 import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import org.slf4j.Logger;
@@ -57,5 +58,15 @@ public class StudentRepository {
             passport.setNumber("E1234567");
             //Database Operation 4 - Update student
             student.setName("Mateo - updated");
+    }
+
+    public void insertStudentAndCourse(Student student, Course course){
+        //Student student = new Student("Jack");
+        //Course course = new Course("Microservces in 100 Steps");
+        student.addCourse(course);
+        course.addStudent(student);
+
+        em.persist(student);
+        em.persist(course);
     }
 }
