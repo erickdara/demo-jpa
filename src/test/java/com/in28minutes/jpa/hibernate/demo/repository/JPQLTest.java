@@ -2,6 +2,7 @@ package com.in28minutes.jpa.hibernate.demo.repository;
 
 import com.in28minutes.jpa.hibernate.demo.DemoApplication;
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -48,6 +49,30 @@ public class JPQLTest {
     public void jpql_courses_without_students(){
         TypedQuery<Course> query = em.createQuery("Select c from Course c where c.students is empty",Course.class);
         List<Course> resultList = query.getResultList();
+
+        logger.info("Results  -> {}", resultList);
+    }
+
+    @Test
+    public void jpql_courses_with_atleast_2_students(){
+        TypedQuery<Course> query = em.createQuery("Select c from Course c where size(c.students) >= 2",Course.class);
+        List<Course> resultList = query.getResultList();
+
+        logger.info("Results  -> {}", resultList);
+    }
+
+    @Test
+    public void jpql_courses_ordered_by_students(){
+        TypedQuery<Course> query = em.createQuery("Select c from Course c order by size (c.students) desc",Course.class);
+        List<Course> resultList = query.getResultList();
+
+        logger.info("Results  -> {}", resultList);
+    }
+
+    @Test
+    public void jpql_students_with_passports_in_a_certain_pattern(){
+        TypedQuery<Student> query = em.createQuery("Select s from Student s where s.passport.number like '%1234%'", Student.class);
+        List<Student> resultList = query.getResultList();
 
         logger.info("Results  -> {}", resultList);
     }
