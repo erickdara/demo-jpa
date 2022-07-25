@@ -96,7 +96,28 @@ public class JPQLTest {
             logger.info("Course{} Student{}",result[0], result[1]);
 
         }
-
-
     }
+
+    @Test
+    public void left_join(){
+        Query query = em.createQuery("Select c, s from Course c LEFT JOIN c.students s ");
+        List<Object[]> resultList = query.getResultList();
+        logger.info("Results Size -> {}", resultList.size());
+        for(Object[] result:resultList){
+            logger.info("Course{} Student{}",result[0], result[1]);
+
+        }
+    }
+
+    @Test
+    public void cross_join(){
+        Query query = em.createQuery("Select c, s from Course c, Student s ");
+        List<Object[]> resultList = query.getResultList();
+        logger.info("Results Size -> {}", resultList.size());
+        for(Object[] result:resultList){
+            logger.info("Course{} Student{}",result[0], result[1]);
+
+        }
+    }
+
 }
